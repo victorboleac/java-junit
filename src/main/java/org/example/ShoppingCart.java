@@ -9,18 +9,27 @@ public class ShoppingCart {
         return items;
     }
 
+    public Double getTotalPrice() {
+        return totalPrice;
+    }
+
+    private Double totalPrice = 0.0;
+
     private Map<String, Double> items = new HashMap<>();
 
     public  void addItem(String name, Double price){
         this.items.put(name, price);
 
     }
-    public Double totalPrice(){
+    public void totalPrice(){
         Collection<Double> values = this.items.values();
-        Double total = 0.0;
+
         for (Double value : values){
-            total+=value;
+            totalPrice+=value;
         }
-        return total;
+
+    }
+    public void applyDiscount(Double percentage){
+        totalPrice = totalPrice - totalPrice*percentage;
     }
 }

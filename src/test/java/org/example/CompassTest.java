@@ -143,8 +143,27 @@ class CompassTest {
         // Act
         shoppingCart.addItem("Bread", 1.12);
         shoppingCart.addItem("Milk", 2.12);
-        Double result = shoppingCart.totalPrice();
+        shoppingCart.totalPrice();
+        Double result = shoppingCart.getTotalPrice();
         // Assert
         assertEquals(3.24, result);
+    }
+    @Test
+    @DisplayName("Checks how applyDiscount works")
+    void testApplyDiscount_withAddingTwoNewItems(){
+        // Arrange
+        ShoppingCart shoppingCart = new ShoppingCart();
+        // Act
+        shoppingCart.addItem("Bread", 1.12);
+        shoppingCart.addItem("Milk", 2.12);
+        shoppingCart.totalPrice();
+        Double result = shoppingCart.getTotalPrice();
+        shoppingCart.applyDiscount(0.1);
+        Double resultWithTenPercentsDiscount = shoppingCart.getTotalPrice();
+        // Assert
+
+        assertEquals(3.24, result);
+        assertEquals(2.916, Math.round(resultWithTenPercentsDiscount*1000.0)/1000.0);
+
     }
 }
