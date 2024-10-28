@@ -3,6 +3,8 @@ package org.example;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CompassTest {
@@ -83,5 +85,23 @@ class CompassTest {
         // Assert
         assertFalse(checkNoPalindrome);
         assertTrue(checkPalindrome);
+    }
+
+    @Test
+    @DisplayName("Some tests")
+    void checkTheLongestWords(){
+        // Arrange
+        var analyser = new WordAnalyser();
+        String input = "This is some example test data - come up with your own!";
+        String secondInput = "This is some example test data - come up with your own example!";
+        String[] expectedOne = new String[]{"example"};
+        String[] expectedTwo = new String[]{"example", "example"};
+        // Act
+        String [] longestWordsInput = analyser.findLongestWords(input);
+        String [] longestWordsForSecondInput = analyser.findLongestWords(secondInput);
+        // Assert
+        assertEquals(Arrays.toString(expectedOne), Arrays.toString(longestWordsInput));
+        assertEquals(Arrays.toString(expectedTwo), Arrays.toString(longestWordsForSecondInput));
+
     }
 }
