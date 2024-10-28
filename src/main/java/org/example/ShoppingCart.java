@@ -5,20 +5,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ShoppingCart {
-    public Map<String, Double> getItems() {
-        return items;
-    }
-
-    public Double getTotalPrice() {
-        return totalPrice;
-    }
 
     private Double totalPrice = 0.0;
 
     private Map<String, Double> items = new HashMap<>();
 
     public  void addItem(String name, Double price){
-        this.items.put(name, price);
+        if (price <=0){
+            System.out.println("Product should have the price greater than zero");
+        }else {
+            this.items.put(name, price);
+        }
+
 
     }
     public void totalPrice(){
@@ -32,4 +30,12 @@ public class ShoppingCart {
     public void applyDiscount(Double percentage){
         totalPrice = totalPrice - totalPrice*percentage;
     }
+    public Map<String, Double> getItems() {
+        return items;
+    }
+
+    public Double getTotalPrice() {
+        return totalPrice;
+    }
+
 }

@@ -166,4 +166,17 @@ class CompassTest {
         assertEquals(2.916, Math.round(resultWithTenPercentsDiscount*1000.0)/1000.0);
 
     }
+    @Test
+    @DisplayName("Checks how totalPrice works")
+    void testCheckTotalPrice_withAddingItemWithNegativePrice(){
+        // Arrange
+        ShoppingCart shoppingCart = new ShoppingCart();
+        // Act
+        shoppingCart.addItem("Bread", -1.12);
+        shoppingCart.addItem("Milk", 2.12);
+        shoppingCart.totalPrice();
+        Double result = shoppingCart.getTotalPrice();
+        // Assert
+        assertEquals(2.12, result);
+    }
 }
