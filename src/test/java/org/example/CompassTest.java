@@ -120,4 +120,31 @@ class CompassTest {
         assertEquals(1,lCounter);
         assertEquals(0, zCounter);
     }
+
+    @Test
+    @DisplayName("Checks how addItem works")
+    void testCheckAddItem_withAddingTwoNewItems(){
+        // Arrange
+        ShoppingCart shoppingCart = new ShoppingCart();
+        // Act
+        shoppingCart.addItem("Bread", 1.12);
+        // Assert
+        assertEquals(1.12, shoppingCart.getItems().get("Bread"));
+        // Act
+        shoppingCart.addItem("Milk", 2.12);
+        // Assert
+        assertEquals(2, shoppingCart.getItems().size());
+    }
+    @Test
+    @DisplayName("Checks how totalPrice works")
+    void testCheckTotalPrice_withAddingTwoNewItems(){
+        // Arrange
+        ShoppingCart shoppingCart = new ShoppingCart();
+        // Act
+        shoppingCart.addItem("Bread", 1.12);
+        shoppingCart.addItem("Milk", 2.12);
+        Double result = shoppingCart.totalPrice();
+        // Assert
+        assertEquals(3.24, result);
+    }
 }
