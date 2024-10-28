@@ -59,4 +59,29 @@ class CompassTest {
                 () -> assertEquals(Compass.Point.SOUTH, westCompass.point)
         );
     }
+    @Test
+    @DisplayName("Testing if reverseString is working")
+    void testReverseString(){
+        //Arrange
+        String sampleString = "Sample text for testing purposes.";
+        StringManipulator manipulator = new StringManipulator();
+        //Act
+        String sampleStringReversed = manipulator.reverseString(sampleString);
+        // Assert
+        assertEquals(".sesoprup gnitset rof txet elpmaS", sampleStringReversed);
+    }
+    @Test
+    @DisplayName("Testing if a string is palindrome")
+    void testIfItIsPalindrome(){
+        //Arrange
+        String noPalindrome = "Sample text for testing purposes.";
+        String palindrome = "racecar";
+        StringManipulator manipulator = new StringManipulator();
+        //Act
+        boolean checkNoPalindrome = manipulator.isPalindrome(noPalindrome);
+        boolean checkPalindrome = manipulator.isPalindrome(palindrome);
+        // Assert
+        assertFalse(checkNoPalindrome);
+        assertTrue(checkPalindrome);
+    }
 }
