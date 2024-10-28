@@ -1,6 +1,7 @@
 package org.example;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.HashMap;
 
 public class WordAnalyser {
     public String[] findLongestWords(String text) {
@@ -28,6 +29,15 @@ public class WordAnalyser {
 
     public Map<Character, Integer> calculateLetterFrequency(String text) {
         // TODO: Implement the logic to calculate the frequency of each letter in the given text
-        return null;
+        Map<Character, Integer> frequency = new HashMap<>();
+        for(char ch: text.toCharArray()){
+            ch = Character.toLowerCase(ch);
+             if (frequency.containsKey(ch)){
+                 frequency.put(ch, frequency.get(ch)+1);
+             } else {
+                 frequency.put(ch,1);
+             }
+        }
+        return frequency;
     }
 }

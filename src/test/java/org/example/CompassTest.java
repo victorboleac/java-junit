@@ -88,14 +88,14 @@ class CompassTest {
     }
 
     @Test
-    @DisplayName("Some tests")
+    @DisplayName("Testing findLongestWords method from WordAnalyser class")
     void checkTheLongestWords(){
         // Arrange
         var analyser = new WordAnalyser();
-        String input = "This is some example test data - come up with your own!";
-        String secondInput = "This is some example test data - come up with your own example!";
-        String[] expectedOne = new String[]{"example"};
-        String[] expectedTwo = new String[]{"example", "example"};
+        String input = "This is a fairly boring sentence.";
+        String secondInput = "This is a fairly boring thing";
+        String[] expectedOne = new String[]{"sentence"};
+        String[] expectedTwo = new String[]{"fairly", "boring"};
         // Act
         String [] longestWordsInput = analyser.findLongestWords(input);
         String [] longestWordsForSecondInput = analyser.findLongestWords(secondInput);
@@ -103,5 +103,21 @@ class CompassTest {
         assertEquals(Arrays.toString(expectedOne), Arrays.toString(longestWordsInput));
         assertEquals(Arrays.toString(expectedTwo), Arrays.toString(longestWordsForSecondInput));
 
+    }
+    @Test
+    @DisplayName("Checks how calculateFrequency method works")
+    void testCalculateLetterFrequency_withTwoLetters(){
+        //Arrange
+        String input = "This is a fairly boring thing.";
+        WordAnalyser wordAnalyser = new WordAnalyser();
+        //Act
+        Integer lCounter = wordAnalyser.calculateLetterFrequency(input).get('l');
+        Integer zCounter = wordAnalyser.calculateLetterFrequency(input).get('z');
+        if(zCounter==null){
+            zCounter = 0;
+        }
+        // Assert
+        assertEquals(1,lCounter);
+        assertEquals(0, zCounter);
     }
 }
