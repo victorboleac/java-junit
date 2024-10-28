@@ -16,23 +16,30 @@ public class Compass {
                     this.point = Point.EAST;
                     return this.point;
                 }
-                return null;
+                this.point = Point.WEST;
+                return this.point;
 
             } else if (point == Point.EAST) {
                 if(direction == Direction.RIGHT){
                     this.point = Point.SOUTH;
                     return this.point;
                 }
+                this.point = Point.NORTH;
+                return this.point;
             } else if (point == Point.SOUTH) {
                 if(direction == Direction.RIGHT){
                     this.point = Point.WEST;
                     return this.point;
                 }
+                this.point = Point.EAST;
+                return this.point;
             } else if (point == Point.WEST){
                 if(direction == Direction.RIGHT){
                     this.point = Point.NORTH;
                     return this.point;
                 }
+                this.point = Point.SOUTH;
+                return this.point;
 
             }
 

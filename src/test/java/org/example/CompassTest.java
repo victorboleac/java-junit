@@ -38,4 +38,25 @@ class CompassTest {
                 () -> assertEquals(Compass.Point.NORTH, westCompass.point)
         );
     }
+    @Test
+    @DisplayName("Testing All points with assertAll for Left direction")
+    void compassFourPointsRotatingLeft(){
+        // Arrange
+        Compass northCompass = new Compass();
+        Compass westCompass = new Compass();
+        Compass southCompass = new Compass();
+        Compass eastCompass = new Compass();
+        // Act
+        northCompass.rotate(Compass.Point.NORTH, Compass.Direction.LEFT);
+        westCompass.rotate(Compass.Point.WEST, Compass.Direction.LEFT);
+        southCompass.rotate(Compass.Point.SOUTH, Compass.Direction.LEFT);
+        eastCompass.rotate(Compass.Point.EAST, Compass.Direction.LEFT);
+        // Assert
+        assertAll(
+                () -> assertEquals(Compass.Point.WEST, northCompass.point),
+                () -> assertEquals(Compass.Point.NORTH, eastCompass.point),
+                () -> assertEquals(Compass.Point.EAST, southCompass.point),
+                () -> assertEquals(Compass.Point.SOUTH, westCompass.point)
+        );
+    }
 }
